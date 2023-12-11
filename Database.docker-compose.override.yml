@@ -1,4 +1,0 @@
-services:
-  db:
-    # increase the number of connections to the database for testing
-    command: postgres -N 1000
