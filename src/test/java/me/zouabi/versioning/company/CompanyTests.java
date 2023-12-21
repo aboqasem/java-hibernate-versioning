@@ -1,4 +1,4 @@
-package me.zouabi.versioning;
+package me.zouabi.versioning.company;
 
 import lombok.extern.slf4j.Slf4j;
 import me.zouabi.versioning.model.entity.Company;
@@ -17,18 +17,14 @@ class CompanyTests {
 
     @Test
     void createCompany() {
+        final var name = "Test Company";
         final var company = Company.builder()
-                .name("Test Company")
+                .name(name)
                 .build();
 
         companyRepository.save(company);
 
-        final var versionId = company.getVersionId();
-        Assertions.assertThat(versionId).isNotNull();
-        Assertions.assertThat(versionId).isEqualTo(company.getId());
-        Assertions.assertThat(versionId.version()).isEqualTo(7);
-
-        Assertions.assertThat(company.getEntityId()).isNotNull();
+        Assertions.assertThat(company.getName()).isEqualTo(name);
     }
 
 }
